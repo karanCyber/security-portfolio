@@ -10,8 +10,8 @@ const CustomCursor: React.FC = () => {
         const dot = dotRef.current;
         if (!cursor || !dot) return;
 
-        const moveCursor = gsap.quickTo(cursor, 'css', { duration: 0.5, ease: 'power3.out' });
-        const moveDot = gsap.quickTo(dot, 'css', { duration: 0.15, ease: 'power2.out' });
+        const _moveCursor = gsap.quickTo(cursor, 'css', { duration: 0.5, ease: 'power3.out' });
+        const _moveDot = gsap.quickTo(dot, 'css', { duration: 0.15, ease: 'power2.out' });
 
         const xCursor = gsap.quickTo(cursor, 'x', { duration: 0.5, ease: 'power3.out' });
         const yCursor = gsap.quickTo(cursor, 'y', { duration: 0.5, ease: 'power3.out' });

@@ -61,7 +61,7 @@ const ScrollText: React.FC = () => {
 
         const steps = gsap.utils.toArray<HTMLElement>('.timeline-step');
 
-        steps.forEach((step, index) => {
+        steps.forEach((step, _index) => {
             const line = step.querySelector('.timeline-line');
             const dot = step.querySelector('.timeline-dot');
             const content = step.querySelector('.timeline-content');
