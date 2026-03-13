@@ -15,7 +15,7 @@ const ParticleNetwork: React.FC = () => {
         let angleX = 0.3;
 
         // Ambient particles
-        const numAmbient = 40;
+        const numAmbient = 60;
         let ambientParticles: { x: number; y: number; vx: number; vy: number; r: number; alpha: number }[] = [];
 
         // Scroll state
@@ -131,10 +131,10 @@ const ParticleNetwork: React.FC = () => {
                 ambientParticles.push({
                     x: Math.random() * window.innerWidth,
                     y: Math.random() * window.innerHeight,
-                    vx: (Math.random() - 0.5) * 0.3,
-                    vy: (Math.random() - 0.5) * 0.3,
-                    r: Math.random() * 2 + 1,
-                    alpha: Math.random() * 0.2 + 0.05
+                    vx: (Math.random() - 0.5) * 0.06,
+                    vy: (Math.random() - 0.5) * 0.06,
+                    r: Math.random() * 1.5 + 0.5,
+                    alpha: Math.random() * 0.35 + 0.15
                 });
             }
         };
@@ -207,12 +207,12 @@ const ParticleNetwork: React.FC = () => {
                 if (p.y > window.innerHeight) p.y = 0;
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(0, 191, 255, ${p.alpha})`;
+                ctx.fillStyle = `rgba(200, 230, 255, ${p.alpha})`;
                 ctx.fill();
             }
 
             // Globe
-            angleY += 0.003;
+            angleY += 0.0008;
             const cosX = Math.cos(angleX);
             const sinX = Math.sin(angleX);
             const cosY = Math.cos(angleY);
@@ -280,16 +280,18 @@ const ParticleNetwork: React.FC = () => {
             projected.sort((a, b) => a.z - b.z);
 
             for (const pt of projected) {
-                const size = Math.max(0.6, pt.depth * 2.8);
-                const opacity = Math.min(1, Math.max(0.12, (pt.z + dynamicRadius * 1.2) / (dynamicRadius * 2.4)));
+                const size = Math.max(0.5, pt.depth * 2.2);
+                const rawOpacity = (pt.z + dynamicRadius * 1.2) / (dynamicRadius * 2.4);
+                const opacity = Math.min(1, Math.max(0.08, rawOpacity)) * 0.45;
 
-                const r = Math.floor(lerp(0, 138, pt.colorRatio));
-                const g = Math.floor(lerp(191, 43, pt.colorRatio));
-                const b = Math.floor(lerp(255, 226, pt.colorRatio));
+                // Light, near-white palette: front dots are bright cyan-white, back are dim
+                const r = Math.floor(lerp(160, 220, pt.colorRatio));
+                const g = Math.floor(lerp(220, 240, pt.colorRatio));
+                const b = Math.floor(lerp(255, 255, pt.colorRatio));
 
                 ctx.beginPath();
                 ctx.arc(pt.px, pt.py, size, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${opacity * 0.85})`;
+                ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${opacity})`;
                 ctx.fill();
             }
 

@@ -14,22 +14,22 @@ const Hero: React.FC = () => {
         const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
 
         tl.fromTo('.hero-badge',
-            { opacity: 0, x: 60, filter: 'blur(6px)' },
-            { opacity: 1, x: 0, filter: 'blur(0px)', duration: 1 }
+            { opacity: 0, y: 40, filter: 'blur(6px)' },
+            { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1 }
         )
             .fromTo('.hero-title',
-                { opacity: 0, x: 120, filter: 'blur(12px)' },
-                { opacity: 1, x: 0, filter: 'blur(0px)', duration: 1.3 },
+                { opacity: 0, y: 60, filter: 'blur(12px)' },
+                { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1.3 },
                 '-=0.6'
             )
             .fromTo('.hero-subtitle',
-                { opacity: 0, x: 80 },
-                { opacity: 1, x: 0, duration: 1 },
+                { opacity: 0, y: 40 },
+                { opacity: 1, y: 0, duration: 1 },
                 '-=0.6'
             )
             .fromTo('.hero-buttons',
-                { opacity: 0, x: 50 },
-                { opacity: 1, x: 0, duration: 0.8 },
+                { opacity: 0, y: 30 },
+                { opacity: 1, y: 0, duration: 0.8 },
                 '-=0.4'
             );
     }, { scope: sectionRef });

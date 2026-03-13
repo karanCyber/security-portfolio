@@ -66,29 +66,39 @@ const Experience: React.FC = () => {
     const sectionRef = useRef<HTMLElement>(null);
 
     useGSAP(() => {
-        gsap.fromTo('.exp-label', { opacity: 0, y: 30 }, {
-            opacity: 1, y: 0, duration: 0.8,
-            scrollTrigger: { trigger: sectionRef.current, start: 'top 75%' }
-        });
-        gsap.fromTo('.exp-title', { opacity: 0, y: 40 }, {
-            opacity: 1, y: 0, duration: 1,
-            scrollTrigger: { trigger: sectionRef.current, start: 'top 75%' }
-        });
+        if (!sectionRef.current) return;
 
-        document.querySelectorAll('.experience-card').forEach((card, i) => {
+        gsap.fromTo(sectionRef.current.querySelector('.exp-label'),
+            { opacity: 0, y: 30 },
+            {
+                opacity: 1, y: 0, duration: 0.8,
+                scrollTrigger: { trigger: sectionRef.current, start: 'top 80%' }
+            }
+        );
+        gsap.fromTo(sectionRef.current.querySelector('.exp-title'),
+            { opacity: 0, y: 40 },
+            {
+                opacity: 1, y: 0, duration: 1,
+                scrollTrigger: { trigger: sectionRef.current, start: 'top 80%' }
+            }
+        );
+
+        sectionRef.current.querySelectorAll('.experience-card').forEach((card, i) => {
             gsap.fromTo(card,
-                { opacity: 0, x: 60, y: 20 },
+                { opacity: 0, y: 50 },
                 {
-                    opacity: 1, x: 0, y: 0, duration: 0.85, ease: 'power3.out',
-                    delay: i * 0.05,
+                    opacity: 1, y: 0,
+                    duration: 0.9, ease: 'power3.out',
+                    delay: i * 0.1,
                     scrollTrigger: {
-                        trigger: card, start: 'top 88%', end: 'top 20%',
-                        toggleActions: 'play none none reverse',
+                        trigger: card,
+                        start: 'top 95%',
+                        toggleActions: 'play none none none',
                     }
                 }
             );
         });
-    }, { scope: sectionRef });
+    }, { scope: sectionRef, dependencies: [] });
 
     return (
         <section id="experience" ref={sectionRef} style={{ padding: '8rem 0' }}>
@@ -96,7 +106,7 @@ const Experience: React.FC = () => {
                 <div style={{ marginBottom: '4rem' }}>
                     <div className="exp-label section-label">Career Arc</div>
                     <h2 className="exp-title" style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)' }}>
-                        Professional <span className="gradient-text">Experience</span>
+                        Professional <span className="gradient-text torch-center">Experience</span>
                     </h2>
                 </div>
 

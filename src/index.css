@@ -31,20 +31,44 @@ body {
 }
 
 * {
-  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+  box-sizing: border-box;
 }
 
+/* Mouse-tracked torch on hero title */
 .torch-text {
   background: radial-gradient(circle at var(--x, 50%) var(--y, 50%),
       white 0%,
-      rgba(255, 255, 255, 0.2) 20%,
+      rgba(255, 255, 255, 0.25) 18%,
       transparent 50%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   display: inline-block;
   padding: 0.1em;
-  /* prevents clipping from the gradient edge */
+}
+
+/* Auto-centered torch for section headings — pulses spotlight from center */
+.torch-center {
+  background: radial-gradient(
+      circle at var(--tx, 50%) var(--ty, 50%),
+      white 0%,
+      rgba(255, 255, 255, 0.3) 15%,
+      rgba(200, 220, 255, 0.15) 35%,
+      transparent 60%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+  padding: 0.1em;
+  --tx: 50%;
+  --ty: 50%;
+  animation: torchPulse 3s ease-in-out infinite;
+}
+
+@keyframes torchPulse {
+  0%, 100% { --tx: 50%; filter: brightness(1); }
+  50% { --tx: 50%; filter: brightness(1.15); }
 }
 
 * {
@@ -99,25 +123,12 @@ h6 {
   font-weight: 700;
   line-height: 1.15;
   color: var(--text-primary);
-  transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
-p,
-.section-label {
-  transition: color 0.3s ease, text-shadow 0.3s ease;
-}
-
-/* Torch text effect */
-h1:hover,
+/* Subtle hover brightening on text — not torch, just glow */
 h2:hover,
-h3:hover,
-h4:hover,
-h5:hover,
-h6:hover,
-p:hover,
-.section-label:hover {
-  color: #ffffff !important;
-  text-shadow: 0 0 12px rgba(255, 255, 255, 0.4), 0 0 24px rgba(0, 191, 255, 0.2) !important;
+h3:hover {
+  text-shadow: 0 0 20px rgba(0, 191, 255, 0.18);
 }
 
 .gradient-text {

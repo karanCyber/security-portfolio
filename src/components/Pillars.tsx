@@ -61,10 +61,10 @@ const Pillars: React.FC = () => {
             scrollTrigger: { trigger: sectionRef.current, start: 'top 80%' }
         });
 
-        gsap.fromTo('.pillar-card', { opacity: 0, y: 50, scale: 0.92 }, {
+        gsap.fromTo('.pillar-card', { opacity: 0, y: 50, scale: 0.93 }, {
             opacity: 1, y: 0, scale: 1, duration: 0.9, stagger: 0.15,
             ease: 'back.out(1.3)',
-            scrollTrigger: { trigger: '.pillars-grid', start: 'top 80%', toggleActions: 'play none none reverse' }
+            scrollTrigger: { trigger: '.pillars-grid', start: 'top 95%', toggleActions: 'play none none none' }
         });
     }, { scope: sectionRef });
 
@@ -73,7 +73,7 @@ const Pillars: React.FC = () => {
             <div className="container">
                 <div className="pillar-label section-label" style={{ marginBottom: '1.5rem' }}>Core Expertise</div>
                 <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)', marginBottom: '4rem', maxWidth: '600px' }}>
-                    Three pillars of <span className="gradient-text">enterprise defense</span>
+                    Three pillars of <span className="gradient-text torch-center">enterprise defense</span>
                 </h2>
 
                 <div className="pillars-grid" style={{

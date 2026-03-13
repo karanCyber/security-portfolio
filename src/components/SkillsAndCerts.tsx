@@ -104,19 +104,19 @@ const SkillsAndCerts: React.FC = () => {
         gsap.fromTo('.skill-tag', { opacity: 0, scale: 0.8, y: 20 }, {
             opacity: 1, scale: 1, y: 0, duration: 0.5, stagger: 0.04,
             ease: 'back.out(1.5)',
-            scrollTrigger: { trigger: '.skills-grid', start: 'top 80%', toggleActions: 'play none none reverse' }
+            scrollTrigger: { trigger: '.skills-grid', start: 'top 95%', toggleActions: 'play none none none' }
         });
 
-        gsap.fromTo('.cert-card', { opacity: 0, x: 60, y: 10 }, {
-            opacity: 1, x: 0, y: 0, duration: 0.6, stagger: 0.07,
+        gsap.fromTo('.cert-card', { opacity: 0, y: 20 }, {
+            opacity: 1, y: 0, duration: 0.6, stagger: 0.05,
             ease: 'power3.out',
-            scrollTrigger: { trigger: '.certs-grid', start: 'top 85%', toggleActions: 'play none none reverse' }
+            scrollTrigger: { trigger: '.certs-grid', start: 'top 95%', toggleActions: 'play none none none' }
         });
 
         gsap.fromTo('.edu-card', { opacity: 0, y: 30 }, {
             opacity: 1, y: 0, duration: 0.8, stagger: 0.2,
             ease: 'power3.out',
-            scrollTrigger: { trigger: '.edu-card', start: 'top 88%', toggleActions: 'play none none reverse' }
+            scrollTrigger: { trigger: '.edu-card', start: 'top 95%', toggleActions: 'play none none none' }
         });
     }, { scope: sectionRef });
 
@@ -128,7 +128,7 @@ const SkillsAndCerts: React.FC = () => {
                 <div style={{ marginBottom: '6rem' }}>
                     <div className="skills-label section-label">Technical Arsenal</div>
                     <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', marginBottom: '3rem' }}>
-                        Skills & <span className="gradient-text">Expertise</span>
+                        Skills & <span className="gradient-text torch-center">Expertise</span>
                     </h2>
 
                     <div className="skills-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
@@ -168,7 +168,7 @@ const SkillsAndCerts: React.FC = () => {
                 <div style={{ marginBottom: '6rem' }}>
                     <div className="section-label" style={{ marginBottom: '1.5rem' }}>Credentials</div>
                     <h2 style={{ fontSize: 'clamp(1.8rem, 3vw, 2.8rem)', marginBottom: '2.5rem' }}>
-                        Certifications
+                        <span className="torch-center">Certifications</span>
                     </h2>
                     <div className="certs-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))', gap: '1rem' }}>
                         {certifications.map((cert, ci) => (
@@ -236,9 +236,20 @@ const SkillsAndCerts: React.FC = () => {
                 {/* ── Contact ── */}
                 <div style={{ marginBottom: '6rem' }}>
                     <div className="section-label" style={{ marginBottom: '1.5rem' }}>Get In Touch</div>
-                    <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', marginBottom: '2rem' }}>
-                        Let's <span className="gradient-text">connect</span>
+                    <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', marginBottom: '0.8rem' }}>
+                        Let's <span className="gradient-text torch-center">connect</span>
                     </h2>
+                    {/* Availability badge */}
+                    <div style={{
+                        display: 'inline-flex', alignItems: 'center', gap: '8px',
+                        padding: '6px 16px', borderRadius: '50px', marginBottom: '2rem',
+                        background: 'rgba(0, 200, 120, 0.08)',
+                        border: '1px solid rgba(0, 200, 120, 0.25)',
+                        fontSize: '0.82rem', color: '#00c878', fontWeight: 600,
+                    }}>
+                        <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#00c878', display: 'inline-block', boxShadow: '0 0 6px #00c878' }} />
+                        Open to opportunities · Based in Hagen, Germany
+                    </div>
                     <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
                         <a
                             href="mailto:pkaran0802@gmail.com"
