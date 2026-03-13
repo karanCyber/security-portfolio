@@ -87,7 +87,7 @@ const education = [
         degree: 'Bachelor of Engineering in Electronics Engineering',
         school: 'Vidyalankar Institute of Technology',
         location: 'Mumbai, India',
-        period: '— 2023',
+        period: '2020 — 2023',
         grade: '2.0 GPA',
     },
 ];
