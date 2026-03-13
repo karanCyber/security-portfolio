@@ -6,6 +6,11 @@ const CustomCursor: React.FC = () => {
     const dotRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
+        // Disable on touch devices
+        if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+            return;
+        }
+
         const cursor = cursorRef.current;
         const dot = dotRef.current;
         if (!cursor || !dot) return;

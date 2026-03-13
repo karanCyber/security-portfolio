@@ -331,3 +331,61 @@ a {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
+
+/* === RESPONSIVE DESIGN === */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+
+  section {
+    padding: 4rem 0;
+  }
+
+  .pillar-card {
+    min-height: 350px;
+    padding: 2rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column !important;
+    align-items: center;
+  }
+
+  .hero-buttons .btn {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 1rem;
+  }
+
+  section {
+    padding: 3rem 0;
+  }
+
+  .pillar-card {
+    min-height: 300px;
+    padding: 1.5rem;
+  }
+
+  h1 {
+    font-size: clamp(2.5rem, 10vw, 5rem) !important;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1rem, 4vw, 1.4rem) !important;
+  }
+
+  .timeline-step {
+    gap: 1.5rem !important;
+    padding-left: 0 !important;
+  }
+
+  .timeline-step .timeline-dot {
+    margin-top: 0 !important;
+  }
+}

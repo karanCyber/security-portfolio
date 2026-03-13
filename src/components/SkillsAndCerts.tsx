@@ -76,12 +76,21 @@ const certifications = [
     { name: 'Zscaler For Users - Essentials (EDU-200) Certificate', issuer: 'Zscaler Training', date: 'Dec 2023', color: '#00bfff' },
 ];
 
-const education = {
-    degree: 'Master of Science — Informatics & Business',
-    school: 'Fachhochschule Südwestfalen',
-    location: 'Hagen, Germany',
-    period: 'Sep 2025 — Present',
-};
+const education = [
+    {
+        degree: 'Master of Science — Informatics & Business',
+        school: 'Fachhochschule Südwestfalen',
+        location: 'Hagen, Germany',
+        period: 'Sep 2025 — Present',
+    },
+    {
+        degree: 'Bachelor of Engineering in Electronics Engineering',
+        school: 'Vidyalankar Institute of Technology',
+        location: 'Mumbai, India',
+        period: '— 2023',
+        grade: '2.0 GPA',
+    },
+];
 
 const SkillsAndCerts: React.FC = () => {
     const sectionRef = useRef<HTMLElement>(null);
@@ -105,7 +114,7 @@ const SkillsAndCerts: React.FC = () => {
         });
 
         gsap.fromTo('.edu-card', { opacity: 0, y: 30 }, {
-            opacity: 1, y: 0, duration: 0.8,
+            opacity: 1, y: 0, duration: 0.8, stagger: 0.2,
             ease: 'power3.out',
             scrollTrigger: { trigger: '.edu-card', start: 'top 88%', toggleActions: 'play none none reverse' }
         });
@@ -196,21 +205,31 @@ const SkillsAndCerts: React.FC = () => {
                 {/* ── Education ── */}
                 <div style={{ marginBottom: '6rem' }}>
                     <div className="section-label" style={{ marginBottom: '1.5rem' }}>Education</div>
-                    <div className="edu-card glass-card" style={{
-                        padding: '2rem 2.5rem', maxWidth: '640px',
-                        borderLeft: '3px solid', borderImage: 'var(--accent-gradient) 1',
-                        display: 'flex', flexDirection: 'column', gap: '0.6rem',
-                    }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '0.4rem' }}>
-                            <GraduationCap size={22} color="var(--accent-cyan)" />
-                            <h3 style={{ fontSize: '1.15rem', fontWeight: 700 }}>{education.degree}</h3>
-                        </div>
-                        <div style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', fontWeight: 600 }}>{education.school}</div>
-                        <div style={{ display: 'flex', gap: '1rem', color: 'var(--text-muted)', fontSize: '0.85rem', alignItems: 'center' }}>
-                            <span>{education.location}</span>
-                            <span>·</span>
-                            <span style={{ color: 'var(--accent-cyan)' }}>{education.period}</span>
-                        </div>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+                        {education.map((edu, index) => (
+                            <div key={index} className="edu-card glass-card" style={{
+                                padding: '2rem 2.5rem', maxWidth: '640px',
+                                borderLeft: '3px solid', borderImage: 'var(--accent-gradient) 1',
+                                display: 'flex', flexDirection: 'column', gap: '0.6rem',
+                            }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '0.4rem' }}>
+                                    <GraduationCap size={22} color="var(--accent-cyan)" />
+                                    <h3 style={{ fontSize: '1.15rem', fontWeight: 700 }}>{edu.degree}</h3>
+                                </div>
+                                <div style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', fontWeight: 600 }}>{edu.school}</div>
+                                <div style={{ display: 'flex', gap: '1rem', color: 'var(--text-muted)', fontSize: '0.85rem', alignItems: 'center' }}>
+                                    <span>{edu.location}</span>
+                                    <span>·</span>
+                                    <span style={{ color: 'var(--accent-cyan)' }}>{edu.period}</span>
+                                    {edu.grade && (
+                                        <>
+                                            <span>·</span>
+                                            <span style={{ color: 'var(--accent-green)' }}>{edu.grade}</span>
+                                        </>
+                                    )}
+                                </div>
+                            </div>
+                        ))}
                     </div>
                 </div>
 

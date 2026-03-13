@@ -78,7 +78,7 @@ const Pillars: React.FC = () => {
 
                 <div className="pillars-grid" style={{
                     display: 'grid',
-                    gridTemplateColumns: 'repeat(3, 1fr)',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
                     gap: '1.5rem',
                 }}>
                     {pillars.map((p, i) => (

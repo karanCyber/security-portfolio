@@ -13,6 +13,11 @@ const SmoothScroll: React.FC<SmoothScrollProps> = ({ children }) => {
     const lenisRef = useRef<Lenis | null>(null);
 
     useEffect(() => {
+        // Disable smooth scroll on touch devices
+        if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+            return;
+        }
+
         const lenis = new Lenis({
             duration: 1.2,
             easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
