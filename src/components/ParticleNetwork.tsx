@@ -205,10 +205,9 @@ const ParticleNetwork: React.FC = () => {
                 if (p.x > window.innerWidth) p.x = 0;
                 if (p.y < 0) p.y = window.innerHeight;
                 if (p.y > window.innerHeight) p.y = 0;
-                const isLight = document.body.classList.contains('light-mode');
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-                ctx.fillStyle = isLight ? `rgba(0, 119, 204, ${p.alpha * 1.5})` : `rgba(0, 191, 255, ${p.alpha})`;
+                ctx.fillStyle = `rgba(0, 191, 255, ${p.alpha})`;
                 ctx.fill();
             }
 
@@ -284,15 +283,13 @@ const ParticleNetwork: React.FC = () => {
                 const size = Math.max(0.6, pt.depth * 2.8);
                 const opacity = Math.min(1, Math.max(0.12, (pt.z + dynamicRadius * 1.2) / (dynamicRadius * 2.4)));
 
-                const isLight = document.body.classList.contains('light-mode');
-                // Adjust colors for light mode: Deep blue vs Cyan
-                const r = isLight ? Math.floor(lerp(0, 106, pt.colorRatio)) : Math.floor(lerp(0, 138, pt.colorRatio));
-                const g = isLight ? Math.floor(lerp(119, 13, pt.colorRatio)) : Math.floor(lerp(191, 43, pt.colorRatio));
-                const b = isLight ? Math.floor(lerp(204, 173, pt.colorRatio)) : Math.floor(lerp(255, 226, pt.colorRatio));
+                const r = Math.floor(lerp(0, 138, pt.colorRatio));
+                const g = Math.floor(lerp(191, 43, pt.colorRatio));
+                const b = Math.floor(lerp(255, 226, pt.colorRatio));
 
                 ctx.beginPath();
                 ctx.arc(pt.px, pt.py, size, 0, Math.PI * 2);
-                ctx.fillStyle = isLight ? `rgba(${r}, ${g}, ${b}, ${opacity * 0.95})` : `rgba(${r}, ${g}, ${b}, ${opacity * 0.85})`;
+                ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${opacity * 0.85})`;
                 ctx.fill();
             }
 

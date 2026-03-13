@@ -10,13 +10,11 @@ import Pillars from './components/Pillars';
 import Marquee from './components/Marquee';
 import Experience from './components/Experience';
 import SkillsAndCerts from './components/SkillsAndCerts';
-import ThemeToggle from './components/ThemeToggle';
 
 function App() {
   return (
     <Router>
       <SmoothScroll>
-        <ThemeToggle />
         <CustomCursor />
         {/* Fixed particle globe background */}
         <div style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', zIndex: 0, pointerEvents: 'none' }}>

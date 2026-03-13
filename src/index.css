@@ -25,26 +25,6 @@
   --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.light-mode {
-  --bg-primary: #f8f9fa;
-  --bg-secondary: #ffffff;
-  --bg-tertiary: #f1f3f5;
-
-  --text-primary: #1a1a1a;
-  --text-secondary: #495057;
-  --text-muted: #868e96;
-
-  --accent-cyan: #0077cc;
-  --accent-blue: #3355dd;
-  --accent-purple: #6a0dad;
-
-  --shadow-glow-sm: 0 4px 12px rgba(0, 0, 0, 0.05);
-  --shadow-glow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
-
-  --marquee-stroke: rgba(0, 0, 0, 0.15);
-}
-
-
 
 body {
   transition: background-color 0.5s ease, color 0.5s ease;
